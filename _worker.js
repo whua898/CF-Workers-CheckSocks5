@@ -57,6 +57,14 @@ export default {
 		const url = new URL(urlText);
 		const origin = request.headers.get('Origin') || '';
 
+		// 密钥路径校验: 设置环境变量 AUTH_PATH 后, 所有请求必须以 /<AUTH_PATH> 开头, 否则一律 404
+		// 目的: 该 Worker 无鉴权且地址会出现在公开仓库里, 防止被第三方拿去白嫖/刷量 (未配置 AUTH_PATH 时行为不变)
+		if (env.AUTH_PATH) {
+			const 密钥段 = '/' + (url.pathname.split('/')[1] || '');
+			if (密钥段 !== '/' + env.AUTH_PATH) return new Response('Not Found', { status: 404 });
+			url.pathname = url.pathname.slice(密钥段.length) || '/';
+		}
+
 		if (request.method === 'OPTIONS') {
 			return new Response(null, { status: 204, headers: corsHeaders(origin) });
 		}
