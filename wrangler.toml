@@ -4,9 +4,9 @@ compatibility_date = "2026-05-01"
 workers_dev = true
 
 # Optional: bind a custom domain route instead of *.workers.dev
-# routes = [
-#   { pattern = "check.example.com/*", zone_name = "example.com" }
-# ]
+routes = [
+  { pattern = "chks5.8dy.xx.kg/*", zone_name = "chks5.8dy.xx.kg" }
+]
 
 # Optional: override the footer HTML exposed as env.BEIAN in the Worker
 # [vars]
