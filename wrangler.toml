@@ -5,7 +5,7 @@ workers_dev = true
 
 # Optional: bind a custom domain route instead of *.workers.dev
 routes = [
-  { pattern = "chks5.8dy.xx.kg/*", zone_name = "chks5.8dy.xx.kg" }
+  { pattern = "chks5.8dy.xx.kg/*", zone_name = "8dy.xx.kg" }
 ]
 
 # Optional: override the footer HTML exposed as env.BEIAN in the Worker
